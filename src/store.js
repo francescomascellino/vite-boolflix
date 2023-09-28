@@ -8,10 +8,6 @@ export const store = reactive({
     api_url: "https://api.themoviedb.org/3/search/movie", // MOVIES
 
     movies: [], //response DELLA CHIAMATA AXIOS
-    /*     movieTitle: "",
-        movieOriginalTitle: "",
-        movieLang: "",
-        movieVote: Number(""), */
 
     searchImput: "",
 
