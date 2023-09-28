@@ -32,32 +32,36 @@ export default {
 <template>
     <header>
 
-        <h1 class=" text-capitalize text-info text-center">BOOLFLIX BETA</h1>
+        <div class="d-flex align-content-center justify-content-center bfx-logo">
+            <img src="./assets/img/logo.png" alt="logo">
+        </div>
 
-        <input type="search" name="bfx-searchBar" id="bfx-searchBar" v-model="this.store.searchImput"> <button
-            @click="startSearch">Search</button>
+        <div class="d-flex align-content-center justify-content-end me-5 bfx-searchBox">
+            <input class="me-2 rounded-2" type="search" name="bfx-searchBar" id="bfx-searchBar"
+                v-model="this.store.searchImput">
+            <button class="rounded-2 bfx-btn" @click="startSearch">Search</button>
+        </div>ox
+
+
 
     </header>
 
     <main>
         <div class="container class my-4">
-            <div class="row g-4">
-                <div class="col-2" v-for="show in this.store.searchResult">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-evenly g-4">
+                <div class="col" v-for="show in this.store.searchResult">
 
-                    <div class="card">
+                    <div class="shadow bfx-card">
 
-                        <img class="card-img-top bfx-poster"
-                            :alt="show.original_title ? show.original_title : show.original_name"
-                            :src="'https://image.tmdb.org/t/p/w342/' + `${show.poster_path}`"
-                            @error="$event.target.src = 'src/assets/img/404.jpg'" />
+                        <div class="bfx-overlay">
 
-                        <div class=" card-body">
+                            <p><span class="bfx-title text-uppercase">titolo:</span> `{{ show.title ? show.title : show.name
+                            }}`</p>
 
-                            <p>TITOLO: `{{ show.title ? show.title : show.name }}`</p>
+                            <p><span class="bfx-title">titolo originale:</span> `{{ show.original_title ?
+                                show.original_title : show.original_name }}`</p>
 
-                            <p>TITOLO ORIGINALE: `{{ show.original_title ? show.original_title : show.original_name }}`</p>
-
-                            <p class="card-text"> Original Language:
+                            <p class="card-text"><span class="bfx-title text-uppercase">original language: </span>
 
                                 <img class="bfx-flag" :alt="show.original_language"
                                     :src="show.original_language == 'en' ? 'https://flagsapi.com/GB/shiny/64.png' : 'https://flagsapi.com/' + show.original_language.toUpperCase().split('_')[0] + '/shiny/64.png'"
@@ -67,18 +71,27 @@ export default {
 
                             </p>
 
+                            <p><span class="bfx-title text-uppercase">voto: </span>
 
-                            <p class="card-text">{{ show.vote_average }} <i class="fa-solid fa-star"></i></p>
+                                <span v-for="vote in Math.round(show.vote_average / 2)">
+                                    <i class="fa-solid fa-star"></i>
+                                </span>
 
-                            <span v-for="vote in Math.round(show.vote_average / 2)">
-                                <i class="fa-solid fa-star"></i>
-                            </span>
+                                <span v-for="vote in Math.round(5 - show.vote_average / 2)">
+                                    <i class="fa-regular fa-star"></i>
+                                </span>
 
-                            <span v-for="vote in Math.round(5 - show.vote_average / 2)">
-                                <i class="fa-regular fa-star"></i>
-                            </span>
+                            </p>
+
+                            <p><span class="bfx-title text-uppercase">sinossi: </span> {{ show.overview }}</p>
 
                         </div>
+
+                        <img class="card-img-top bfx-poster"
+                            :alt="show.original_title ? show.original_title : show.original_name"
+                            :src="'https://image.tmdb.org/t/p/w342/' + `${show.poster_path}`"
+                            @error="$event.target.src = 'src/assets/img/404.jpg'" />
+
                     </div>
 
                 </div>
@@ -89,11 +102,20 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.bfx-poster {
-    min-height: 246px;
+@use './assets/scss/partials/bfxCards.scss';
+
+@use './assets/scss/partials/variables.scss' as *;
+
+.bfx-logo img {
+    height: 100px;
 }
 
-.bfx-flag {
-    height: 24px;
+.bfx-btn {
+    // vertical-align: middle;
+    border: none;
+    // border-radius: 5px;
+    padding: 0.3rem 0.8rem;
+    background-color: $bfx-accent;
+    color: $bfx-primary;
 }
 </style>

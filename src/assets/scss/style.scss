@@ -1,5 +1,12 @@
 @use 'bootstrap';
 
+@use './partials/variables.scss' as *;
+
 body {
-    background-color: aliceblue;
+    background-color: $bfx-medium;
+}
+
+.col {
+    max-width: 342px !important;
+    padding: 0 !important;
 }

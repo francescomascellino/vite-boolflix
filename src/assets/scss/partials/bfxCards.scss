@@ -1,0 +1,42 @@
+@use './variables.scss' as *;
+
+.bfx-card {
+    position: relative;
+    width: 342px;
+    height: 513px;
+    display: flex;
+    align-items: center;
+    background-color: $bfx-dark;
+    color: $bfx-primary;
+
+    .bfx-title {
+        font-weight: bold;
+    }
+}
+
+.bfx-card:hover .bfx-overlay {
+    display: block;
+}
+
+.bfx-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: $bfx-darkOverlay;
+    display: none;
+    color: white;
+    padding: 1rem;
+    overflow-y: auto;
+
+    p {
+        vertical-align: middle;
+    }
+}
+
+.bfx-flag {
+    height: 24px;
+}
