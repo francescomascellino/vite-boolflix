@@ -65,7 +65,15 @@ export default {
                             </p>
 
 
-                            <p class="card-text">{{ show.vote_average }}</p>
+                            <p class="card-text">{{ show.vote_average }} <i class="fa-solid fa-star"></i></p>
+
+                            <span v-for="vote in Math.round(show.vote_average / 2)">
+                                <i class="fa-solid fa-star"></i>
+                            </span>
+
+                            <span v-for="vote in Math.round(5 - show.vote_average / 2)">
+                                <i class="fa-regular fa-star"></i>
+                            </span>
 
                         </div>
                     </div>
