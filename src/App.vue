@@ -38,7 +38,7 @@ export default {
 
         <div class="d-flex align-content-center justify-content-end me-5 bfx-searchBox">
             <input class="me-2 rounded-2" type="search" name="bfx-searchBar" id="bfx-searchBar"
-                v-model="this.store.searchImput">
+                v-model="this.store.searchImput" @keyup.enter="startSearch">
             <button class="rounded-2 bfx-btn" @click="startSearch">Search</button>
         </div>ox
 
