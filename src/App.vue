@@ -12,12 +12,18 @@ export default {
 
     mounted() {
 
+        console.log(store.getFlag("en"));
+        console.log(store.getFlag("es"));
+        console.log(store.getFlag("de"));
+        console.log(store.getFlag("it"));
+
 
     },
 
     methods: {
         startSearch() {
             store.searchResult = [];
+            console.log("SEARCH EMPTIED", store.searchResult);
             store.searchContent(this.store.api_movies);
             store.searchTv(this.store.api_tv);
             console.log("SEARCH RES", store.searchResult);
@@ -45,8 +51,12 @@ export default {
                 <div class="col-2" v-for="show in this.store.searchResult">
 
                     <div class="card">
-                        <img class="card-img-top" src="https://picsum.photos/200" alt="">
+
+                        <img class="card-img-top" :alt="show.original_title ? show.original_title : show.original_name"
+                            :src="'https://image.tmdb.org/t/p/w342/' + `${show.poster_path}`" />
+
                         <div class="card-body">
+
                             <p>TITOLO: `{{ show.title ? show.title : show.name }}`</p>
 
                             <p>TITOLO ORIGINALE: `{{ show.original_title ? show.original_title : show.original_name }}`</p>
