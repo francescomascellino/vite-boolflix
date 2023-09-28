@@ -12,29 +12,6 @@ export const store = reactive({
     tv: [],
     searchResult: [],
 
-    flags: [
-        {
-            lang: "en",
-            url: "https://flagsapi.com/US/shiny/64.png"
-        },
-
-        {
-            lang: "es",
-            url: "https://flagsapi.com/ES/shiny/64.png"
-        },
-
-        {
-            lang: "de",
-            url: "https://flagsapi.com/DE/shiny/64.png"
-        },
-
-        {
-            lang: "it",
-            url: "https://flagsapi.com/IT/shiny/64.png"
-        },
-
-    ],
-
     searchImput: "",
 
     searchContent(url) {
@@ -82,10 +59,5 @@ export const store = reactive({
                 console.error(error);
             })
     },
-
-    getFlag(language) {
-        let index = this.flags.findIndex(flag => flag.lang == language);
-        return this.flags[index].url;
-    }
 
 })

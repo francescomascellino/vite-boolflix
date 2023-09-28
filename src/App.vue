@@ -12,12 +12,6 @@ export default {
 
     mounted() {
 
-        console.log(store.getFlag("en"));
-        console.log(store.getFlag("es"));
-        console.log(store.getFlag("de"));
-        console.log(store.getFlag("it"));
-
-
     },
 
     methods: {
@@ -61,8 +55,15 @@ export default {
 
                             <p>TITOLO ORIGINALE: `{{ show.original_title ? show.original_title : show.original_name }}`</p>
 
-                            <p class="card-text">{{ show.original_language }} <img class="bfx-flag"
-                                    :alt="show.original_language" :src="this.store.getFlag(show.original_language)" /></p>
+                            <p class="card-text"> Original Language:
+
+                                <img class="bfx-flag" :alt="show.original_language"
+                                    :src="show.original_language == 'en' ? 'https://flagsapi.com/GB/shiny/64.png' : 'https://flagsapi.com/' + show.original_language.toUpperCase().split('_')[0] + '/shiny/64.png'" />
+
+                                ({{ show.original_language.toUpperCase() }})
+
+                            </p>
+
 
                             <p class="card-text">{{ show.vote_average }}</p>
 
