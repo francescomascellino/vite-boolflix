@@ -46,10 +46,12 @@ export default {
 
                     <div class="card">
 
-                        <img class="card-img-top" :alt="show.original_title ? show.original_title : show.original_name"
-                            :src="'https://image.tmdb.org/t/p/w342/' + `${show.poster_path}`" />
+                        <img class="card-img-top bfx-poster"
+                            :alt="show.original_title ? show.original_title : show.original_name"
+                            :src="'https://image.tmdb.org/t/p/w342/' + `${show.poster_path}`"
+                            @error="$event.target.src = 'src/assets/img/404.jpg'" />
 
-                        <div class="card-body">
+                        <div class=" card-body">
 
                             <p>TITOLO: `{{ show.title ? show.title : show.name }}`</p>
 
@@ -58,7 +60,8 @@ export default {
                             <p class="card-text"> Original Language:
 
                                 <img class="bfx-flag" :alt="show.original_language"
-                                    :src="show.original_language == 'en' ? 'https://flagsapi.com/GB/shiny/64.png' : 'https://flagsapi.com/' + show.original_language.toUpperCase().split('_')[0] + '/shiny/64.png'" />
+                                    :src="show.original_language == 'en' ? 'https://flagsapi.com/GB/shiny/64.png' : 'https://flagsapi.com/' + show.original_language.toUpperCase().split('_')[0] + '/shiny/64.png'"
+                                    @error="$event.target.src = 'https://cdn3.iconfinder.com/data/icons/faticons/32/globe-01-512.png'" />
 
                                 ({{ show.original_language.toUpperCase() }})
 
@@ -86,6 +89,10 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.bfx-poster {
+    min-height: 246px;
+}
+
 .bfx-flag {
     height: 24px;
 }
