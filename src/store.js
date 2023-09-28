@@ -16,10 +16,26 @@ export const store = reactive({
         {
             lang: "en",
             url: "https://flagsapi.com/US/shiny/64.png"
-        }
+        },
+
+        {
+            lang: "es",
+            url: "https://flagsapi.com/ES/shiny/64.png"
+        },
+
+        {
+            lang: "de",
+            url: "https://flagsapi.com/DE/shiny/64.png"
+        },
+
+        {
+            lang: "it",
+            url: "https://flagsapi.com/IT/shiny/64.png"
+        },
+
     ],
 
-    searchImput: "Star Wars",
+    searchImput: "",
 
     searchContent(url) {
         axios.get(url, {
@@ -67,15 +83,9 @@ export const store = reactive({
             })
     },
 
-    /*     getFlag(iso) {
-            return iso.toUpperCase()
-        } */
-
     getFlag(language) {
         let index = this.flags.findIndex(flag => flag.lang == language);
         return this.flags[index].url;
     }
-
-
 
 })

@@ -12,9 +12,6 @@ export default {
 
     mounted() {
 
-        // store.searchContent(this.store.api_movies);
-        // store.searchContent(this.store.api_tv);
-        store.getFlag("en")
 
     },
 
@@ -50,16 +47,14 @@ export default {
                     <div class="card">
                         <img class="card-img-top" src="https://picsum.photos/200" alt="">
                         <div class="card-body">
-                            <p>`{{ show.title ? show.title : show.name }}`</p>
-                            <p>`{{ show.original_title ? show.original_title : show.original_name }}`</p>
-                            <p class="card-text">{{ show.original_title }}</p>
-                            <p class="card-text">{{ show.original_language }}</p>
-                            <p class="card-text">{{ show.vote_average }}</p>
-                            <img class="bfx-flag" :alt="show.original_language"
-                                :src="this.store.getFlag(show.original_language)" />
+                            <p>TITOLO: `{{ show.title ? show.title : show.name }}`</p>
 
-                            <!-- <img class="bfx-flag" :alt="show.original_language"
-                                :src="'https://flagsapi.com/' + `${this.store.getFlag(show.original_language)}` + '/shiny/64.png'" /> -->
+                            <p>TITOLO ORIGINALE: `{{ show.original_title ? show.original_title : show.original_name }}`</p>
+
+                            <p class="card-text">{{ show.original_language }} <img class="bfx-flag"
+                                    :alt="show.original_language" :src="this.store.getFlag(show.original_language)" /></p>
+
+                            <p class="card-text">{{ show.vote_average }}</p>
 
                         </div>
                     </div>
