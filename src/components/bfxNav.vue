@@ -31,8 +31,6 @@ import { store } from '../store';
 export default {
     name: "bfxNav",
 
-    emits: ['bfxSearch'],
-
     data() {
         return {
 
