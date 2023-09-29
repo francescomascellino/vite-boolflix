@@ -2,9 +2,15 @@
 
 @use './partials/variables.scss' as *;
 
+*::-webkit-scrollbar {
+    display: none;
+}
+
 body {
     background-color: $bfx-medium;
 }
+
+
 
 .col {
     max-width: 342px !important;

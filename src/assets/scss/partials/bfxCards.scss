@@ -8,6 +8,7 @@
     align-items: center;
     background-color: $bfx-dark;
     color: $bfx-primary;
+    overflow: hidden;
 
     .bfx-title {
         font-weight: bold;
@@ -30,7 +31,7 @@
     display: none;
     color: white;
     padding: 1rem;
-    overflow-y: auto;
+    overflow-y: scroll;
 
     p {
         vertical-align: middle;
