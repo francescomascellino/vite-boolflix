@@ -64,6 +64,7 @@ export default {
     },
 
     methods: {
+
         startSearch() {
             store.searchResult = [];
             console.log("SEARCH EMPTIED", store.searchResult);
@@ -95,5 +96,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@use '../assets/scss/partials/bfxNav.scss'
+@use '../assets/scss/partials/bfxNav.scss';
 </style>

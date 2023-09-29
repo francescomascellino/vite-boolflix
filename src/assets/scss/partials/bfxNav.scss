@@ -16,6 +16,10 @@
     color: $bfx-primary;
     font-weight: bold;
     border-bottom: 3px solid transparent !important;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .bfx-active {
