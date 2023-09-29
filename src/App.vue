@@ -4,9 +4,15 @@ import { store } from './store';
 
 export default {
 
+    components: {
+
+    },
+
     data() {
         return {
+
             store,
+
         }
     },
 
@@ -29,9 +35,9 @@ export default {
             return new URL(`${url}`, import.meta.url).href
         }
 
-    }
-}
+    },
 
+}
 
 </script>
 
@@ -53,9 +59,10 @@ export default {
     </header>
 
     <main>
+
         <div class="container class my-4">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-evenly g-4">
-                <div class="col" v-for="show in  this.store.searchResult ">
+                <div class="col" v-for="show in  this.store.searchResult">
 
                     <div class="shadow bfx-card">
 
@@ -104,6 +111,7 @@ export default {
 
             </div>
         </div>
+
     </main>
 </template>
 
@@ -117,9 +125,7 @@ export default {
 }
 
 .bfx-btn {
-    // vertical-align: middle;
     border: none;
-    // border-radius: 5px;
     padding: 0.3rem 0.8rem;
     background-color: $bfx-accent;
     color: $bfx-primary;

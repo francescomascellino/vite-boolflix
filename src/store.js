@@ -76,7 +76,7 @@ export const store = reactive({
 
                 this.trending = response.data.results;
                 this.searchResult.push(...response.data.results);
-                console.log("TV", this.trending);
+                console.log("TRENDING", this.trending);
 
             })
             .catch(error => {
