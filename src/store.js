@@ -14,6 +14,7 @@ export const store = reactive({
     movies: [], //response DELLA CHIAMATA AXIOS MOVIES
     tv: [], //response DELLA CHIAMATA AXIOS TV
     trending: [], //response DELLA CHIAMATA AXIOS TRENDING
+
     searchResult: [], // ARRAY DEL REST DELLE RICHERCHE
 
     searchImput: "",
