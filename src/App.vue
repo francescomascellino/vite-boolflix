@@ -23,6 +23,10 @@ export default {
             console.log("SEARCH RES", store.searchResult);
         },
 
+        getPosterUrl(url) {
+            return new URL(`${url}`, import.meta.url).href
+        }
+
     }
 }
 
@@ -49,7 +53,7 @@ export default {
     <main>
         <div class="container class my-4">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-evenly g-4">
-                <div class="col" v-for="show in this.store.searchResult">
+                <div class="col" v-for="show in  this.store.searchResult ">
 
                     <div class="shadow bfx-card">
 
@@ -73,11 +77,11 @@ export default {
 
                             <p><span class="bfx-title text-uppercase">voto: </span>
 
-                                <span v-for="vote in Math.round(show.vote_average / 2)">
+                                <span v-for=" vote  in  Math.round(show.vote_average / 2) ">
                                     <i class="fa-solid fa-star"></i>
                                 </span>
 
-                                <span v-for="vote in Math.round(5 - show.vote_average / 2)">
+                                <span v-for=" vote  in  Math.round(5 - show.vote_average / 2) ">
                                     <i class="fa-regular fa-star"></i>
                                 </span>
 
@@ -90,7 +94,7 @@ export default {
                         <img class="card-img-top bfx-poster"
                             :alt="show.original_title ? show.original_title : show.original_name"
                             :src="'https://image.tmdb.org/t/p/w342/' + `${show.poster_path}`"
-                            @error="$event.target.src = 'src/assets/img/404.jpg'" />
+                            @error="$event.target.src = getPosterUrl('./assets/img/404.jpg')" />
 
                     </div>
 
