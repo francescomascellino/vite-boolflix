@@ -52,7 +52,5 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-// @use './assets/scss/partials/bfxCards.scss';
-
 @use './assets/scss/partials/variables.scss' as *;
 </style>

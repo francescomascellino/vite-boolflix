@@ -4,12 +4,7 @@
     height: 100px;
 }
 
-.bfx-btn {
-    border: none;
-    padding: 0.3rem 0.8rem;
-    background-color: $bfx-accent;
-    color: $bfx-primary;
-}
+
 
 .nav-link {
     text-decoration: none;
@@ -20,8 +15,16 @@
     &:hover {
         cursor: pointer;
     }
+
 }
 
 .bfx-active {
     border-bottom: 3px solid $bfx-accent !important;
+}
+
+.bfx-btn {
+    border: none;
+    padding: 0.3rem 0.8rem;
+    background-color: $bfx-accent;
+    color: $bfx-primary;
 }
