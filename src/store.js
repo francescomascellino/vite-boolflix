@@ -9,13 +9,12 @@ export const store = reactive({
     api_tv: "https://api.themoviedb.org/3/search/tv", // TV SERIES
     api_trending: 'https://api.themoviedb.org/3/trending/all/day', // TRENDING TODAY
     api_trend_movies: 'https://api.themoviedb.org/3/trending/movie/day', //TRENDING MOVIES
-
     api_trend_tv: 'https://api.themoviedb.org/3/trending/tv/day', //TRENDING series
 
-    movies: [], //response DELLA CHIAMATA AXIOS
-    tv: [],
-    trending: [],
-    searchResult: [],
+    movies: [], //response DELLA CHIAMATA AXIOS MOVIES
+    tv: [], //response DELLA CHIAMATA AXIOS TV
+    trending: [], //response DELLA CHIAMATA AXIOS TRENDING
+    searchResult: [], // ARRAY DEL REST DELLE RICHERCHE
 
     searchImput: "",
 
