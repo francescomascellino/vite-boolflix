@@ -13,10 +13,32 @@ export default {
 
             store,
 
+            navLinks: [
+
+                {
+                    text: "Trending",
+                    path: store.searchMovies(store.api_movies)
+                },
+
+
+                {
+                    text: "Movies",
+                    path: store.searchMovies(store.api_movies)
+                },
+
+                {
+                    text: "Series",
+                    path: store.searchMovies(store.api_movies)
+                },
+
+            ],
+
+            activeLink: 0
+
         }
     },
 
-    mounted() {
+    created() {
 
         store.searchTrending(this.store.api_trending);
 
@@ -26,13 +48,17 @@ export default {
         startSearch() {
             store.searchResult = [];
             console.log("SEARCH EMPTIED", store.searchResult);
-            store.searchContent(this.store.api_movies);
+            store.searchMovies(this.store.api_movies);
             store.searchTv(this.store.api_tv);
             console.log("SEARCH RES", store.searchResult);
         },
 
         getPosterUrl(url) {
             return new URL(`${url}`, import.meta.url).href
+        },
+
+        turnActive(index) {
+            this.activeLink = index
         }
 
     },
@@ -44,15 +70,32 @@ export default {
 <template>
     <header>
 
-        <div class="d-flex align-content-center justify-content-center bfx-logo">
-            <img src="./assets/img/logo.png" alt="logo">
-        </div>
+        <nav class="navbar text-danger ">
 
-        <div class="d-flex align-content-center justify-content-end me-5 bfx-searchBox">
-            <input class="me-2 rounded-2" type="search" name="bfx-searchBar" id="bfx-searchBar"
-                placeholder="Cosa vuoi guardare?" v-model="this.store.searchImput" @keyup.enter="startSearch">
-            <button class="rounded-2 bfx-btn" @click="startSearch">Search</button>
-        </div>ox
+            <div class="container-fluid">
+                <a class="navbar-brand ms-5 me-auto bfx-logo" href="#"><img src="./assets/img/logo.png" alt="logo"></a>
+
+                <div class="me-5 d-flex me-5 bfx-searchBox">
+                    <ul class="navbar-nav flex-row">
+                        <li class="nav-item ms-4" v-for="(link, index) in navLinks" @click="turnActive(index)">
+                            <span class="nav-link" :class="(index == activeLink ? 'bfx-active' : '')" @click="link.path">
+                                {{ link.text }}
+                            </span>
+                        </li>
+                    </ul>
+
+                    <input class="ms-4 rounded-2" type="search" name="bfx-searchBar" id="bfx-searchBar"
+                        placeholder="Cosa vuoi guardare?" v-model="this.store.searchImput" @keyup.enter="startSearch">
+                    <!-- <button class="rounded-2 bfx-btn" @click="startSearch">Search</button> -->
+
+                </div>
+
+            </div>
+        </nav>
+
+        <div class="d-flex align-content-center justify-content-center bfx-logo">
+
+        </div>
 
 
 
@@ -118,16 +161,7 @@ export default {
 <style lang="scss" scoped>
 @use './assets/scss/partials/bfxCards.scss';
 
+@use './assets/scss/partials/bfxNav.scss';
+
 @use './assets/scss/partials/variables.scss' as *;
-
-.bfx-logo img {
-    height: 100px;
-}
-
-.bfx-btn {
-    border: none;
-    padding: 0.3rem 0.8rem;
-    background-color: $bfx-accent;
-    color: $bfx-primary;
-}
 </style>

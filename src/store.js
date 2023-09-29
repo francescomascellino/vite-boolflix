@@ -16,7 +16,7 @@ export const store = reactive({
 
     searchImput: "",
 
-    searchContent(url) {
+    searchMovies(url) {
         axios.get(url, {
 
             params: {

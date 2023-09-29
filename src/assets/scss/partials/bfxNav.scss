@@ -1,0 +1,23 @@
+@use './variables.scss' as *;
+
+.bfx-logo img {
+    height: 100px;
+}
+
+.bfx-btn {
+    border: none;
+    padding: 0.3rem 0.8rem;
+    background-color: $bfx-accent;
+    color: $bfx-primary;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: $bfx-primary;
+    font-weight: bold;
+    border-bottom: 3px solid transparent !important;
+}
+
+.bfx-active {
+    border-bottom: 3px solid $bfx-accent !important;
+}
