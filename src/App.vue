@@ -2,10 +2,12 @@
 
 import { store } from './store';
 
+import bfxNav from './components/bfxNav.vue';
+
 export default {
 
     components: {
-
+        bfxNav
     },
 
     data() {
@@ -45,16 +47,17 @@ export default {
     },
 
     methods: {
+
+        getPosterUrl(url) {
+            return new URL(`${url}`, import.meta.url).href
+        },
+
         startSearch() {
             store.searchResult = [];
             console.log("SEARCH EMPTIED", store.searchResult);
             store.searchMovies(this.store.api_movies);
             store.searchTv(this.store.api_tv);
             console.log("SEARCH RES", store.searchResult);
-        },
-
-        getPosterUrl(url) {
-            return new URL(`${url}`, import.meta.url).href
         },
 
         turnActive(index) {
@@ -70,34 +73,7 @@ export default {
 <template>
     <header>
 
-        <nav class="navbar text-danger ">
-
-            <div class="container-fluid">
-                <a class="navbar-brand ms-5 me-auto bfx-logo" href="#"><img src="./assets/img/logo.png" alt="logo"></a>
-
-                <div class="me-5 d-flex me-5 bfx-searchBox">
-                    <ul class="navbar-nav flex-row">
-                        <li class="nav-item ms-4" v-for="(link, index) in navLinks" @click="turnActive(index)">
-                            <span class="nav-link" :class="(index == activeLink ? 'bfx-active' : '')" @click="link.path">
-                                {{ link.text }}
-                            </span>
-                        </li>
-                    </ul>
-
-                    <input class="ms-4 rounded-2" type="search" name="bfx-searchBar" id="bfx-searchBar"
-                        placeholder="Cosa vuoi guardare?" v-model="this.store.searchImput" @keyup.enter="startSearch">
-                    <!-- <button class="rounded-2 bfx-btn" @click="startSearch">Search</button> -->
-
-                </div>
-
-            </div>
-        </nav>
-
-        <div class="d-flex align-content-center justify-content-center bfx-logo">
-
-        </div>
-
-
+        <bfxNav @bfxSearch="startSearch()" />
 
     </header>
 

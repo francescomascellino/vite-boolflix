@@ -84,4 +84,12 @@ export const store = reactive({
             })
     },
 
+    startSearch() {
+        store.searchResult = [];
+        console.log("SEARCH EMPTIED", store.searchResult);
+        store.searchMovies(this.store.api_movies);
+        store.searchTv(this.store.api_tv);
+        console.log("SEARCH RES", store.searchResult);
+    },
+
 })
