@@ -12,6 +12,8 @@ export default {
 
     mounted() {
 
+        store.searchTrending(this.store.api_trending);
+
     },
 
     methods: {
