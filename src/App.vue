@@ -15,28 +15,6 @@ export default {
 
             store,
 
-            navLinks: [
-
-                {
-                    text: "Trending",
-                    path: store.searchMovies(store.api_movies)
-                },
-
-
-                {
-                    text: "Movies",
-                    path: store.searchMovies(store.api_movies)
-                },
-
-                {
-                    text: "Series",
-                    path: store.searchMovies(store.api_movies)
-                },
-
-            ],
-
-            activeLink: 0
-
         }
     },
 
@@ -73,7 +51,7 @@ export default {
 <template>
     <header>
 
-        <bfxNav @bfxSearch="startSearch()" />
+        <bfxNav />
 
     </header>
 

@@ -8,6 +8,9 @@ export const store = reactive({
     api_movies: "https://api.themoviedb.org/3/search/movie", // MOVIES
     api_tv: "https://api.themoviedb.org/3/search/tv", // TV SERIES
     api_trending: 'https://api.themoviedb.org/3/trending/all/day', // TRENDING TODAY
+    api_trend_movies: 'https://api.themoviedb.org/3/trending/movie/day', //TRENDING MOVIES
+
+    api_trend_tv: 'https://api.themoviedb.org/3/trending/tv/day', //TRENDING series
 
     movies: [], //response DELLA CHIAMATA AXIOS
     tv: [],
@@ -82,14 +85,6 @@ export const store = reactive({
             .catch(error => {
                 console.error(error);
             })
-    },
-
-    startSearch() {
-        store.searchResult = [];
-        console.log("SEARCH EMPTIED", store.searchResult);
-        store.searchMovies(this.store.api_movies);
-        store.searchTv(this.store.api_tv);
-        console.log("SEARCH RES", store.searchResult);
     },
 
 })

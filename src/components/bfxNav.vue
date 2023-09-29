@@ -7,14 +7,15 @@
             <div class="me-5 d-flex me-5 bfx-searchBox">
                 <ul class="navbar-nav flex-row">
                     <li class="nav-item ms-4" v-for="(link, index) in navLinks" @click="turnActive(index)">
-                        <span class="nav-link" :class="(index == activeLink ? 'bfx-active' : '')" @click="link.path">
+                        <span class="nav-link" :class="(index == activeLink ? 'bfx-active' : '')"
+                            @click="navSearch(link.choice)">
                             {{ link.text }}
                         </span>
                     </li>
                 </ul>
 
                 <input class="ms-4 rounded-2" type="search" name="bfx-searchBar" id="bfx-searchBar"
-                    placeholder="Cosa vuoi guardare?" v-model="this.store.searchImput" @keyup.enter="$emit('bfxSearch')">
+                    placeholder="Cosa vuoi guardare?" v-model="this.store.searchImput" @keyup.enter="startSearch()">
                 <!-- <button class="rounded-2 bfx-btn" @click="startSearch">Search</button> -->
 
             </div>
@@ -41,18 +42,18 @@ export default {
 
                 {
                     text: "Trending",
-                    path: store.searchMovies(store.api_movies)
+                    choice: "srcTrending"
                 },
 
 
                 {
                     text: "Movies",
-                    path: store.searchMovies(store.api_movies)
+                    choice: "srcMovies"
                 },
 
                 {
                     text: "Series",
-                    path: store.searchMovies(store.api_movies)
+                    choice: "srcSeries"
                 },
 
             ],
@@ -63,17 +64,30 @@ export default {
     },
 
     methods: {
-        /*         startSearch() {
-                    store.searchResult = [];
-                    console.log("SEARCH EMPTIED", store.searchResult);
-                    store.searchMovies(this.store.api_movies);
-                    store.searchTv(this.store.api_tv);
-                    console.log("SEARCH RES", store.searchResult);
-                }, */
+        startSearch() {
+            store.searchResult = [];
+            console.log("SEARCH EMPTIED", store.searchResult);
+            store.searchMovies(this.store.api_movies);
+            store.searchTv(this.store.api_tv);
+            console.log("SEARCH RES", store.searchResult);
+        },
 
         turnActive(index) {
             this.activeLink = index
-        }
+        },
+
+        navSearch(argument) {
+            store.searchResult = [];
+            console.log("SEARCH EMPTIED", store.searchResult);
+            if (argument == "srcMovies") {
+                store.searchTrending(this.store.api_trend_movies);
+            } else if (argument == "srcSeries") {
+                store.searchTrending(this.store.api_trend_tv);
+            } else {
+                store.searchTrending(this.store.api_trending);
+            }
+
+        },
 
     },
 
