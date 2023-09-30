@@ -27,11 +27,9 @@
 
                     <p><strong>Prima messa in onda:</strong> {{ serie.first_air_date }}</p>
 
-                    <p> <strong>Sinossi:</strong> {{ serie.overview }} SAREBBE BELLO LEGGERE QUALCOSA, MA LE AIRING TODAY
-                        HANNO COME
-                        SINOSSI
-                        UNA
-                        BELLISSIMA STRINGA DESERTA.</p>
+                    <p> <strong>Sinossi:</strong>
+                        {{ serie.overview == "" ? "SAREBBE BELLO LEGGERE QUALCOSA, MA LE AIRING TODAY HANNO COME SINOSSI UNA BELLISSIMA STRINGA DESERTA." : serie.overview }}
+                    </p>
 
                 </div>
 
