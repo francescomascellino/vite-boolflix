@@ -15,7 +15,7 @@
 
                     <img class="bfx-flag" :alt="show.original_language"
                         :src="show.original_language == 'en' ? 'https://flagsapi.com/GB/shiny/64.png' : 'https://flagsapi.com/' + show.original_language.toUpperCase().split('_')[0] + '/shiny/64.png'"
-                        @error="$event.target.src = 'https://cdn3.iconfinder.com/data/icons/faticons/32/globe-01-512.png'" />
+                        @error="$event.target.src = getPlaceholderImg('../assets/img/small-globe-icon.jpg')" />
 
                     ({{ show.original_language.toUpperCase() }})
 
@@ -39,7 +39,7 @@
 
             <img class="card-img-top bfx-poster" :alt="show.original_title ? show.original_title : show.original_name"
                 :src="'https://image.tmdb.org/t/p/w342/' + `${show.poster_path}`"
-                @error="$event.target.src = getPosterUrl('../assets/img/404.jpg')" />
+                @error="$event.target.src = getPlaceholderImg('../assets/img/404.jpg')" />
 
         </div>
 
@@ -58,7 +58,7 @@ export default {
     },
 
     methods: {
-        getPosterUrl(url) {
+        getPlaceholderImg(url) {
             return new URL(`${url}`, import.meta.url).href
         },
     }

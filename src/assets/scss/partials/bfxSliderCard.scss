@@ -1,0 +1,45 @@
+@use './variables.scss' as *;
+
+.card {
+    width: 171px;
+    margin-right: 10px;
+    display: inline-flex;
+    height: 256px;
+    justify-content: flex-end;
+    position: relative;
+    overflow: hidden;
+    background-color: $bfx-dark;
+
+    img {
+        height: 100%;
+    }
+}
+
+.bfx-card-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: $bfx-darkOverlay;
+    display: none;
+    color: $bfx-primary;
+    padding: 5px;
+    overflow-y: scroll;
+
+    p {
+        vertical-align: middle;
+        font-size: small;
+        line-break: strict;
+    }
+
+    .bfx-flag {
+        height: 24px;
+    }
+}
+
+.card:hover .bfx-card-overlay {
+    display: block;
+}

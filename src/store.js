@@ -20,9 +20,11 @@ export const store = reactive({
 
     airingToday: [], //SERIE TV IN ONDA OGGI
 
-    searchImput: "",
+    searchImput: "", // IL v-model DEL CAMPO DI RICERCA
 
-    navSelection: "Trending",
+    navSelection: "Trending", // ETICHETTA DELL'ELEMENTO DELLA NAV SELEZIONATO
+
+    /* RICERCHE */
 
     searchMovies(url) {
         axios.get(url, {

@@ -14,9 +14,9 @@
                     </li>
                 </ul>
 
-                <input class="ms-4 rounded-2" type="search" name="bfx-searchBar" id="bfx-searchBar"
+                <input class="ms-4 rounded-2" type="search" name="bfx-searchBar" id="bfx-searchBar" required
                     placeholder="Cosa vuoi guardare?" v-model="this.store.searchImput" @keyup.enter="startSearch()">
-                <!-- <button class="rounded-2 bfx-btn" @click="startSearch">Search</button> -->
+                <button class="rounded-2  ms-2 bfx-btn" @click="startSearch">Search</button>
 
             </div>
 
@@ -64,11 +64,15 @@ export default {
     methods: {
 
         startSearch() {
-            store.searchResult = [];
-            console.log("SEARCH EMPTIED", store.searchResult);
-            store.searchMovies(this.store.api_movies);
-            store.searchTv(this.store.api_tv);
-            console.log("SEARCH RES", store.searchResult);
+            if (store.searchImput.length > 0) {
+                store.searchResult = [];
+                console.log("SEARCH EMPTIED", store.searchResult);
+                store.searchMovies(this.store.api_movies);
+                store.searchTv(this.store.api_tv);
+                console.log("SEARCH RES", store.searchResult);
+                store.searchImput = "";
+            }
+
         },
 
         turnActive(index) {
