@@ -10,9 +10,12 @@ body {
     background-color: $bfx-medium;
 }
 
-
-
 .col {
     max-width: 342px !important;
     padding: 0 !important;
+}
+
+h2 {
+    color: $bfx-primary !important;
+    margin-bottom: 2rem;
 }

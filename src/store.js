@@ -10,6 +10,7 @@ export const store = reactive({
     api_trending: 'https://api.themoviedb.org/3/trending/all/day', // TRENDING TODAY
     api_trend_movies: 'https://api.themoviedb.org/3/trending/movie/day', //TRENDING MOVIES
     api_trend_tv: 'https://api.themoviedb.org/3/trending/tv/day', //TRENDING series
+    api_airing_tv: 'https://api.themoviedb.org/3/tv/airing_today',
 
     movies: [], //response DELLA CHIAMATA AXIOS MOVIES
     tv: [], //response DELLA CHIAMATA AXIOS TV
@@ -17,7 +18,11 @@ export const store = reactive({
 
     searchResult: [], // ARRAY DEL REST DELLE RICHERCHE
 
+    airingToday: [], //SERIE TV IN ONDA OGGI
+
     searchImput: "",
+
+    navSelection: "Trending",
 
     searchMovies(url) {
         axios.get(url, {
@@ -80,6 +85,28 @@ export const store = reactive({
                 this.trending = response.data.results;
                 this.searchResult.push(...response.data.results);
                 console.log("TRENDING", this.trending);
+
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    },
+
+    searchAiringToday(url) {
+        axios.get(url, {
+
+            params: {
+                api_key: this.api_key,
+                include_adult: false,
+                language: "it-IT"
+            }
+
+        })
+            .then(response => {
+
+                this.airingToday = response.data.results;
+                // this.searchResult.push(...response.data.results);
+                console.log("AIRING TODAY", this.airingToday);
 
             })
             .catch(error => {

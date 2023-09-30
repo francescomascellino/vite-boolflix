@@ -1,0 +1,8 @@
+@use './variables.scss' as *;
+
+.bfx-btn {
+    border: none;
+    padding: 0.3rem 0.8rem;
+    background-color: $bfx-accent;
+    color: $bfx-primary;
+}

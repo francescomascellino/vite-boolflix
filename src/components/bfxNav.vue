@@ -72,7 +72,9 @@ export default {
         },
 
         turnActive(index) {
-            this.activeLink = index
+            this.activeLink = index;
+            this.store.navSelection = this.navLinks[index].text
+            console.log(this.store.navSelection);
         },
 
         navSearch(argument) {
