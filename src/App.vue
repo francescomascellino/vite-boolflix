@@ -29,6 +29,8 @@
 
 import { store } from './store';
 
+import { Modal } from 'bootstrap';
+
 import bfxNav from './components/bfxNav.vue';
 
 import bfxCards from './components/bfxCards.vue';
@@ -47,6 +49,7 @@ export default {
         return {
 
             store,
+            Modal,
 
         }
     },

@@ -5,6 +5,9 @@
 
             <h2 classs="bfx-secTitle">Airing Today</h2>
 
+            <!-- MODALE -->
+            <bfxModal :serie="serie" v-for="serie in this.store.airingToday" />
+
             <div class="carousel col-12 position-relative">
 
                 <div class="inner" ref="inner" :style="innerStyles">
@@ -25,20 +28,26 @@
 <script>
 import { store } from '../store';
 
+import { Modal } from 'bootstrap';
+
 import bfxSliderCard from './bfxSliderCard.vue';
+
+import bfxModal from './bfxModal.vue';
 
 export default {
 
     name: 'bfxSlider',
 
     components: {
-        bfxSliderCard
+        bfxSliderCard,
+        bfxModal
     },
 
     data() {
         return {
 
             store,
+            Modal,
 
             //SLIDER
             innerStyles: {},

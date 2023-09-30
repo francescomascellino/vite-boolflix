@@ -1,0 +1,13 @@
+@use './variables.scss' as *;
+
+.modal-content {
+
+    background-color: $bfx-medium;
+    color: $bfx-primary;
+    border: none !important;
+
+    .modal-header {
+        border: none !important;
+    }
+
+}

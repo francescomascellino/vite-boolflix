@@ -5,11 +5,11 @@
 
             <div class="bfx-overlay">
 
-                <p><span class="bfx-title text-uppercase">titolo:</span> `{{ show.title ? show.title : show.name
-                }}`</p>
+                <p><span class="bfx-title text-uppercase">titolo:</span> {{ show.title ? show.title : show.name
+                }}</p>
 
-                <p><span class="bfx-title">titolo originale:</span> `{{ show.original_title ?
-                    show.original_title : show.original_name }}`</p>
+                <p><span class="bfx-title">titolo originale:</span> {{ show.original_title ?
+                    show.original_title : show.original_name }}</p>
 
                 <p class="card-text"><span class="bfx-title text-uppercase">original language: </span>
 
