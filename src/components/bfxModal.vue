@@ -10,10 +10,7 @@
 
                 <div class="modal-header">
 
-                    <h1 class="modal-title fs-5" :id="`bfx-sliderModal${serie.id}Label`">{{ serie.title ?
-                        serie.title :
-                        serie.name
-                    }}</h1>
+                    <h1 class="modal-title fs-5" :id="`bfx-sliderModal${serie.id}Label`">{{ serie.name }}</h1>
 
                     <button type="button" class=" btn-close btn-close-white " data-bs-dismiss="modal"
                         aria-label="Close"></button>
@@ -21,14 +18,12 @@
 
                 <div class="modal-body text-wrap">
 
-                    <p><strong>Titolo originale:</strong> `{{ serie.original_title ? serie.original_title :
-                        serie.original_name
-                    }}`</p>
+                    <p><strong>Titolo originale:</strong> {{ serie.original_name }}</p>
 
                     <p><strong>Prima messa in onda:</strong> {{ serie.first_air_date }}</p>
 
                     <p> <strong>Sinossi:</strong>
-                        {{ serie.overview == "" ? "SAREBBE BELLO LEGGERE QUALCOSA, MA LE AIRING TODAY HANNO COME SINOSSI UNA BELLISSIMA STRINGA DESERTA." : serie.overview }}
+                        {{ serie.overview == "" ? "Non disponibile per questo elemento ☹" : serie.overview }}
                     </p>
 
                 </div>

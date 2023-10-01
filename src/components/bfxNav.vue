@@ -8,7 +8,7 @@
                 <ul class="navbar-nav flex-row">
                     <li class="nav-item ms-4" v-for="(link, index) in navLinks" @click="turnActive(index)">
                         <span class="nav-link" :class="(index == activeLink ? 'bfx-active' : '')"
-                            @click="navSearch(link.choice)">
+                            @click="navSearch(link.text)">
                             {{ link.text }}
                         </span>
                     </li>
@@ -40,18 +40,15 @@ export default {
 
                 {
                     text: "Trending",
-                    choice: "srcTrending"
                 },
 
 
                 {
                     text: "Movies",
-                    choice: "srcMovies"
                 },
 
                 {
                     text: "Series",
-                    choice: "srcSeries"
                 },
 
             ],
@@ -70,6 +67,7 @@ export default {
                 store.searchMovies(this.store.api_movies);
                 store.searchTv(this.store.api_tv);
                 console.log("SEARCH RES", store.searchResult);
+                store.navSelection = store.searchImput;
                 store.searchImput = "";
             }
 
@@ -84,9 +82,9 @@ export default {
         navSearch(argument) {
             store.searchResult = [];
             console.log("SEARCH EMPTIED", store.searchResult);
-            if (argument == "srcMovies") {
+            if (argument == "Movies") {
                 store.searchTrending(this.store.api_trend_movies);
-            } else if (argument == "srcSeries") {
+            } else if (argument == "Series") {
                 store.searchTrending(this.store.api_trend_tv);
             } else {
                 store.searchTrending(this.store.api_trending);

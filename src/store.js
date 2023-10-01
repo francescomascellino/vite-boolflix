@@ -26,6 +26,7 @@ export const store = reactive({
 
     /* RICERCHE */
 
+    // FILM
     searchMovies(url) {
         axios.get(url, {
 
@@ -49,6 +50,7 @@ export const store = reactive({
             })
     },
 
+    // SERIE TV
     searchTv(url) {
         axios.get(url, {
 
@@ -72,6 +74,7 @@ export const store = reactive({
             })
     },
 
+    // TRENDING FILM + SERIE
     searchTrending(url) {
         axios.get(url, {
 
@@ -94,6 +97,7 @@ export const store = reactive({
             })
     },
 
+    // SERIE IN ONDA OGGI
     searchAiringToday(url) {
         axios.get(url, {
 

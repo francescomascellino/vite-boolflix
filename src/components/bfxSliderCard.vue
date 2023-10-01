@@ -42,9 +42,7 @@
 
         <div class="text-wrap bfx-card-overlay">
 
-            <p>{{ serie.title ? serie.title :
-                serie.name
-            }}</p>
+            <p>{{ serie.name }}</p>
 
             <p class="card-text"><span class="bfx-title text-uppercase">original language: </span>
 
@@ -66,7 +64,7 @@
 
             </p>
 
-            <p>Clicca per maggior saperne di più</p>
+            <p>Clicca per saperne di più</p>
 
         </div>
 
