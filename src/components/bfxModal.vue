@@ -1,5 +1,5 @@
 <template>
-    <!-- MODALE -->
+    <!-- MODALE - OGNI MODALE HA UN ID DIPENDENTE DALL'ID DELLA CARD DELLA SERIE A CUI VERRA' ASSOCIATA -->
     <div class="modal fade bfx-modal" :id="`bfx-sliderModal${serie.id}`" tabindex="-1"
         :aria-labelledby="`bfx-sliderModal${serie.id}Label`" aria-hidden="true" v-for="serie in this.store.airingToday"
         :key="serie.id">
@@ -35,6 +35,7 @@
 
 <script>
 
+// IMPORT store e Modale
 import { store } from '../store';
 
 import { Modal } from 'bootstrap';
@@ -45,6 +46,7 @@ export default {
 
     props: {
 
+        // VIENE DICHIARATA LA PROP "serie" CHE VERRA' ASSOCIATA DAL GENITORE ALL'OGGETTO DA UTILIZZARE PER IL LIST RENDERING
         serie: "Object"
 
     },

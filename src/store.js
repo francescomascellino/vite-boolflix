@@ -5,13 +5,16 @@ import axios from "axios";
 export const store = reactive({
 
     api_key: "df0571431ac3bb84d4126e111a35cb87",
-    api_movies: "https://api.themoviedb.org/3/search/movie", // MOVIES
-    api_tv: "https://api.themoviedb.org/3/search/tv", // TV SERIES
-    api_trending: 'https://api.themoviedb.org/3/trending/all/day', // TRENDING TODAY
-    api_trend_movies: 'https://api.themoviedb.org/3/trending/movie/day', //TRENDING MOVIES
-    api_trend_tv: 'https://api.themoviedb.org/3/trending/tv/day', //TRENDING series
-    api_airing_tv: 'https://api.themoviedb.org/3/tv/airing_today',
 
+    // LINK API RICERCHER
+    api_movies: "https://api.themoviedb.org/3/search/movie", // MOVIES CON QUERY
+    api_tv: "https://api.themoviedb.org/3/search/tv", // TV SERIES CON QUERY
+    api_trending: 'https://api.themoviedb.org/3/trending/all/day', // TRENDING TODAY (MOVIES & SERIES)
+    api_trend_movies: 'https://api.themoviedb.org/3/trending/movie/day', //TRENDING MOVIES
+    api_trend_tv: 'https://api.themoviedb.org/3/trending/tv/day', //TRENDING SERIES
+    api_airing_tv: 'https://api.themoviedb.org/3/tv/airing_today', //SERIE AIRING TORDAY
+
+    // ARRAY DEI VARI RISULTATI
     movies: [], //response DELLA CHIAMATA AXIOS MOVIES
     tv: [], //response DELLA CHIAMATA AXIOS TV
     trending: [], //response DELLA CHIAMATA AXIOS TRENDING
@@ -26,7 +29,7 @@ export const store = reactive({
 
     /* RICERCHE */
 
-    // FILM
+    // FILM CON QUERY
     searchMovies(url) {
         axios.get(url, {
 
@@ -50,7 +53,7 @@ export const store = reactive({
             })
     },
 
-    // SERIE TV
+    // SERIE TV CON QUERY
     searchTv(url) {
         axios.get(url, {
 
@@ -97,7 +100,7 @@ export const store = reactive({
             })
     },
 
-    // SERIE IN ONDA OGGI
+    // SERIE AIRING TORDAY
     searchAiringToday(url) {
         axios.get(url, {
 

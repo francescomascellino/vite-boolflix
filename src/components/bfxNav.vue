@@ -7,6 +7,7 @@
             <div class="me-5 d-flex me-5 bfx-searchBox">
                 <ul class="navbar-nav flex-row">
                     <li class="nav-item ms-4" v-for="(link, index) in navLinks" @click="turnActive(index)">
+                        <!-- SE "index" e "activeLink" SONO UGUALI ASSEGNA LA CLASSE "bfx-active" -->
                         <span class="nav-link" :class="(index == activeLink ? 'bfx-active' : '')"
                             @click="navSearch(link.text)">
                             {{ link.text }}
@@ -60,13 +61,22 @@ export default {
 
     methods: {
 
+        // RICERCA TRAMITE INPUT (FILM + SERIE)
         startSearch() {
+
+            // SE IL CAMPO DI RICERCA NON E' VUOTO...
             if (store.searchImput.length > 0) {
+
+                // SVUOTA L'ARRAY DEI RISULTATI DI RICERCA
                 store.searchResult = [];
                 console.log("SEARCH EMPTIED", store.searchResult);
+
+                // CERCA SIA FILM CHE SERIE CORRISPONDENTI A "searchImput (VEDI FUNZIONI DI RICERCA SU "store.js")"
                 store.searchMovies(this.store.api_movies);
                 store.searchTv(this.store.api_tv);
                 console.log("SEARCH RES", store.searchResult);
+
+                // ASSEGNA A "navSelection" IL VALORE DEL CAMPO DI RICERCA PER MODIFICARE IL TITOLO IN "App.vue"
                 store.navSelection = store.searchImput;
                 store.searchImput = "";
             }
@@ -74,14 +84,23 @@ export default {
         },
 
         turnActive(index) {
+
+            // ASSEGNA AD "activeLink" IL VALORE DI "index", TRIGGERANDO IL CAMBIO DI CLASSE
             this.activeLink = index;
+
+            // ASSEGNA A NAV SELECYION IL VALORE DEL TESTO DEL MENU' DELLA NAVBAR, TRIGGERANDO IL CAMBIO DI TITOLO IN App.vue
             this.store.navSelection = this.navLinks[index].text
             console.log(this.store.navSelection);
         },
 
+        // RICERCHE FISSE TRAMITE LINK NAVBAR (TRENDING SERIES, TRENDING MOVIES O TRENDING MOVIES + SERIES)
         navSearch(argument) {
+
+            // SVUOTA IL CAMPO DI RICERCA
             store.searchResult = [];
             console.log("SEARCH EMPTIED", store.searchResult);
+
+            // A SECONDA DELL LINK CLICKATO EFFETTUA UNA RICERCA DIVERSA
             if (argument == "Movies") {
                 store.searchTrending(this.store.api_trend_movies);
             } else if (argument == "Series") {

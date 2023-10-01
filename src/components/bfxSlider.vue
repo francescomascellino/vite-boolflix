@@ -5,13 +5,16 @@
 
             <h2 classs="bfx-secTitle">Airing Today</h2>
 
-            <!-- MODALE -->
+            <!-- MODALE - ASSEGNA ALLA PROP "serie" IL LIST RENDERING DELL?ARRAY DELLE SERIE IN ONDA OGGI IN MODO DA POTER VISUALIZZARE LE INFORMAZIONI AGGIUNTIVE DELLA SERIE CLICCATA -->
+
+            <!-- LA MODALE VA CREATA AL DI FUORI DELLO SLIDER PER EVITARE CHE VENGA POSIZIONATA SECONDO LE REGOLE DEL CAROSELLO E NON SIA VISIBILE PER LE CARD PROVENIENTI DA UNA POSIZIONE FUORI CAMPO. LE CARD SI SPOSTANO, MA LA MODALE NO! -->
             <bfxModal :serie="serie" v-for="serie in this.store.airingToday" />
 
             <div class="carousel col-12 position-relative">
 
                 <div class="inner" ref="inner" :style="innerStyles">
 
+                    <!-- CARD DELLO SLIDER - ASSEGNA ALLA PROP "serie" IL LIST RENDERING DELL?ARRAY DELLE SERIE IN ONDA OGGI -->
                     <bfxSliderCard :serie="serie" v-for="serie in this.store.airingToday" :key="serie.id" />
 
                 </div>
@@ -26,6 +29,8 @@
 </template>
 
 <script>
+
+// IMPORT MODALE, STORE E COMPONENTI
 import { store } from '../store';
 
 import { Modal } from 'bootstrap';
@@ -61,6 +66,8 @@ export default {
     },
 
     mounted() {
+
+        // ATTENDE UN MINIMO PRIMA DI EFETTUARE IL SETUP PER FAR SI CHE L'ARRAY VENGA POPOLATO
         setTimeout(() => {
             this.setStep()
         }, 500)
@@ -73,10 +80,15 @@ export default {
         // SLIDER
         setStep() {
 
+            // ASSEGNA ALLA LARGHEZZA INTERNA LA LARCHEZZA DELLO SCROLL
             const innerWidth = this.$refs.inner.scrollWidth
             console.log("AIRING TODAY ARR LENGTH", this.store.airingToday.length);
             console.log("INNER WIDTH", innerWidth);
+
+            // IL NUMERO DI CARD TOTALI SONO QUELLE CONTENTUNE NELL'ARRAY DELLE SERIE IN ONDA OGGI
             let totalCards = this.store.airingToday.length
+
+            // OGNI "SCATTO" ("step") DELLO SLIDER E' UGUALE ALLA LARGHEZZA INTERNA / IL NUMERO DI CARD
             this.step = `${innerWidth / totalCards}px`
             console.log("step:", this.step);
         },
@@ -89,6 +101,8 @@ export default {
             this.moveLeft()
 
             this.afterTransition(() => {
+
+                // DOPO LA TRANSITION RIMUOVE LA CARD INIZIALE (USCITA FUORI CAMPO) E LA INSERISCE ALLA FINE DELL'ARRAY
                 const card = this.store.airingToday.shift()
                 this.store.airingToday.push(card)
                 this.resetTranslate()
@@ -104,6 +118,8 @@ export default {
             this.moveRight()
 
             this.afterTransition(() => {
+
+                // DOPO LA TRANSITION RIMUOVE LA CARD FINALE (USCITA FUORI CAMPO) E LA INSERISCE ALLINIZIO DELL'ARRAY
                 const card = this.store.airingToday.pop()
                 this.store.airingToday.unshift(card)
                 this.resetTranslate()
@@ -112,16 +128,18 @@ export default {
         },
 
         moveLeft() {
+
+            // ESEGUE UN TRANSFOR TRANSLATE X PARI ALLO "this.step"
             this.innerStyles = {
-                transform: `translateX(-${this.step})
-        translateX(-${this.step})`
+                transform: `translateX(-${this.step}) translateX(-${this.step})`
             }
         },
 
         moveRight() {
+
+            // ESEGUE UN TRANSFOR TRANSLATE X PARI ALLO "this.step"
             this.innerStyles = {
-                transform: `translateX(${this.step})
-        translateX(-${this.step})`
+                transform: `translateX(${this.step}) translateX(-${this.step})`
             }
         },
 

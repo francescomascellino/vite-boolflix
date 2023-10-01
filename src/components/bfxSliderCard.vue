@@ -1,43 +1,7 @@
 <template>
-    <!-- MODALE -->
+    <!-- SLIDER CARDS COME bfxCards -->
 
-    <!--     <div class="modal fade bfx-modal" :id="`bfx-sliderModal${serie.id}`" tabindex="-1"
-        :aria-labelledby="`bfx-sliderModal${serie.id}Label`" aria-hidden="true">
-
-        <div class="modal-dialog modal-dialog-centered z-n1">
-
-            <div class="modal-content">
-
-                <div class="modal-header">
-
-                    <h1 class="modal-title fs-5" :id="`bfx-sliderModal${serie.id}Label`">`{{ serie.title ? serie.title :
-                        serie.name
-                    }}`</h1>
-
-                    <button type="button" class=" btn-close btn-close-white " data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body text-wrap">
-
-                    <p>Titolo originale: `{{ serie.original_title ? serie.original_title :
-                        serie.original_name
-                    }}`</p>
-
-                    <p>Prima messa in onda: {{ serie.first_air_date }}</p>
-
-                    <p>Sinossi: {{ serie.overview }} SAREBBE BELLO LEGGERE QUALCOSA, MA LE AIRING TODAY HANNO COME
-                        SINOSSI
-                        UNA
-                        BELLISSIMA STRINGA DESERTA.</p>
-
-                </div>
-
-            </div>
-        </div>
-    </div> -->
-
-    <!-- SLIDER CARDS -->
+    <!-- ALLA CARD E' ASSOCIATA LA MODALE CON ID CORRISPONDENTE ALLA CARD -->
     <div class="card shadow" data-bs-toggle="modal" :data-bs-target="`#bfx-sliderModal${serie.id}`">
 
         <div class="text-wrap bfx-card-overlay">
@@ -96,6 +60,7 @@ export default {
     },
 
     methods: {
+        // TRASFORMA IL PERCORSO DELL'IMMAGINE LOCALE IN UN URL
         getPlaceholderImg(url) {
             return new URL(`${url}`, import.meta.url).href
         },
