@@ -79,8 +79,9 @@ export default {
                 // ASSEGNA ALLA QUERY DELLA CHIAMATA IL VALORE DEL CAMPO DI RICERCA
                 store.query = store.searchImput;
 
-                // IMPOSTA LA PAGINA INIZIALE SU 1
+                // IMPOSTA LE PAGINE INIZIALI SU 1
                 store.moviesPage = 1;
+                store.seriesPage = 1;
 
                 // CERCA SIA FILM CHE SERIE CORRISPONDENTI A "searchImput (VEDI FUNZIONI DI RICERCA SU "store.js")"
                 store.searchMovies(this.store.api_movies);

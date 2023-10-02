@@ -16,7 +16,10 @@ body {
 }
 
 p,
-span,
+span {
+    color: $bfx-primary !important;
+}
+
 h1,
 h2,
 h3 {

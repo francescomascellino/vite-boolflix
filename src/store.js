@@ -27,7 +27,9 @@ export const store = reactive({
 
     query: "", // QUERY CHIAMATA AXIOS
 
-    moviesPage: 1, // CONTROLLO DELLA PAGINA INIZIALE. DEVE ESSERE RIPORTATO A 1 A OGNI RICERCHA
+    moviesPage: 1, // CONTROLLO DELLA PAGINA INIZIALE. DEVE ESSERE RIPORTATO A 1 A OGNI RICERCA
+
+    seriesPage: 1, // CONTROLLO DELLA PAGINA INIZIALE. DEVE ESSERE RIPORTATO A 1 A OGNI RICERCA
 
     navSelection: "Trending", // ETICHETTA DELL'ELEMENTO DELLA NAV SELEZIONATO
 
@@ -50,7 +52,7 @@ export const store = reactive({
 
                 // this.movies = response.data.results;
                 this.movies = response.data;
-                console.log("MOVIES DATA", response.data);
+                // console.log("MOVIES DATA", response.data);
                 // this.searchResult.push(...response.data.results);
                 console.log("MOVIES", this.movies);
 
@@ -68,14 +70,15 @@ export const store = reactive({
                 api_key: this.api_key,
                 query: this.query,
                 include_adult: false,
-                language: "it-IT"
+                language: "it-IT",
+                page: this.seriesPage
             }
 
         })
             .then(response => {
 
-                this.tv = response.data.results;
-                console.log("TV DATA", response.data);
+                this.tv = response.data;
+                // console.log("TV DATA", response.data);
                 // this.searchResult.push(...response.data.results);
                 console.log("TV", this.tv);
 
