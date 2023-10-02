@@ -1,5 +1,4 @@
 <template>
-    <!-- I PULSANTI DI PAGINAZIONE APPAIONO SOLO SE SONO PRESENTI PIU' PAGINE -->
     <div class="col-12 d-flex justify-content-around my-4">
 
         <button class="rounded-2 shadow bfx-btn fw-bold bfx-btn" :class="page == 1 ? 'bfx-btnDisabled' : ''"

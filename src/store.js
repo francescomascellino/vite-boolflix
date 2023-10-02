@@ -6,7 +6,7 @@ export const store = reactive({
 
     api_key: "df0571431ac3bb84d4126e111a35cb87",
 
-    // LINK API RICERCHER
+    // LINK API RICERCHE
     api_movies: "https://api.themoviedb.org/3/search/movie", // MOVIES CON QUERY
     api_tv: "https://api.themoviedb.org/3/search/tv", // TV SERIES CON QUERY
     api_trending: 'https://api.themoviedb.org/3/trending/all/day', // TRENDING TODAY (MOVIES & SERIES)
@@ -19,17 +19,15 @@ export const store = reactive({
     tv: null, //response DELLA CHIAMATA AXIOS TV
     trending: null, //response DELLA CHIAMATA AXIOS TRENDING
 
-    // searchResult: [], ARRAY DEL REST DELLE RICHERCHE
-
     airingToday: [], //SERIE TV IN ONDA OGGI
 
     searchImput: "", // IL v-model DEL CAMPO DI RICERCA
 
     query: "", // QUERY CHIAMATA AXIOS
 
-    moviesPage: 1, // CONTROLLO DELLA PAGINA INIZIALE. DEVE ESSERE RIPORTATO A 1 A OGNI RICERCA
+    moviesPage: 1, // CONTROLLO DELLA PAGINA INIZIALE. DEVE ESSERE RIPORTATO A 1 A OGNI RICERCA (VEDI "startSearch()" IN bfxNav.vue)
 
-    seriesPage: 1, // CONTROLLO DELLA PAGINA INIZIALE. DEVE ESSERE RIPORTATO A 1 A OGNI RICERCA
+    seriesPage: 1, // CONTROLLO DELLA PAGINA INIZIALE. DEVE ESSERE RIPORTATO A 1 A OGNI RICERCA (VEDI "startSearch()" IN bfxNav.vue)
 
     navSelection: "Trending", // ETICHETTA DELL'ELEMENTO DELLA NAV SELEZIONATO
 
@@ -83,7 +81,7 @@ export const store = reactive({
             })
     },
 
-    // TRENDING FILM + SERIE
+    // FILM + SERIE DEL MOMENTO
     searchTrending(url) {
         axios.get(url, {
 

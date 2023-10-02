@@ -7,11 +7,13 @@
             <div class="me-5 d-flex me-5 bfx-searchBox">
                 <ul class="navbar-nav flex-row">
                     <li class="nav-item ms-4" v-for="(link, index) in navLinks" @click="turnActive(index)">
+
                         <!-- SE "index" e "activeLink" SONO UGUALI ASSEGNA LA CLASSE "bfx-active" -->
                         <span class="nav-link" :class="(index == activeLink ? 'bfx-active' : '')"
                             @click="navSearch(link.text)">
                             {{ link.text }}
                         </span>
+
                     </li>
                 </ul>
 
@@ -67,11 +69,7 @@ export default {
             // SE IL CAMPO DI RICERCA NON E' VUOTO...
             if (store.searchImput.length > 0) {
 
-                // SVUOTA L'ARRAY DEI RISULTATI DI RICERCA
-                // store.searchResult = [];
-                // console.log("SEARCH EMPTIED", store.searchResult);
-
-                // DA VALORE "null" A TRENDING PER BLOCCARNE IL RENDERING SU applyStyles.vue
+                // DA VALORE "null" A TRENDING PER BLOCCARNE IL RENDERING SU App.vue
                 store.trending = null;
 
                 //DA VALORE NULL AD "activeLink" PER DESELEZIONARE IL PRECEDENTE FILTRO DELLA NAVBAR
@@ -90,7 +88,6 @@ export default {
                 // CERCA SIA FILM CHE SERIE CORRISPONDENTI A "searchImput (VEDI FUNZIONI DI RICERCA SU "store.js")"
                 store.searchMovies(this.store.api_movies);
                 store.searchTv(this.store.api_tv);
-                // console.log("SEARCH RES", store.searchResult);
 
                 // SVUOTA LA BARRA DI RICERCA
                 store.searchImput = "";
@@ -111,10 +108,7 @@ export default {
         // RICERCHE FISSE TRAMITE LINK NAVBAR (TRENDING SERIES, TRENDING MOVIES O TRENDING MOVIES + SERIES)
         navSearch(argument) {
 
-            // SVUOTA IL CAMPO DI RICERCA
-            // store.searchResult = [];
-            // console.log("SEARCH EMPTIED", store.searchResult);
-
+            // ASSEGNA "null" AGLI ARRAY DEI RISULTATI DELLE RICERCHE PER RESETTARE IL LIST RENDERING DELLE CARD
             store.movies = null;
             store.tv = null;
 

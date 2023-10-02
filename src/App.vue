@@ -46,7 +46,7 @@
 
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
 
-                    <!-- MOSTRA LE CARD ASSOCIANDO LA PROP "show" A LL'OGGETTO CONTENUTO IN "store" -->
+                    <!-- MOSTRA LE CARD ASSOCIANDO LA PROP "show" ALL'OGGETTO CONTENUTO IN "store" -->
                     <bfxCards v-if="this.store.movies" :show="show" v-for="show in this.store.movies.results" />
 
                 </div>
@@ -66,7 +66,7 @@
 
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
 
-                    <!-- MOSTRA LE CARD ASSOCIANDO LA PROP "show" A LL'OGGETTO CONTENUTO IN "store" -->
+                    <!-- MOSTRA LE CARD ASSOCIANDO LA PROP "show" ALL'OGGETTO CONTENUTO IN "store" -->
                     <bfxCards v-if="this.store.tv" :show="show" v-for="show in  this.store.tv.results" />
 
                 </div>
