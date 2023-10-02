@@ -1,4 +1,5 @@
 <template>
+    <!-- ORIGINAL CARD TEMPLATE -->
     <div class="col">
 
         <div class="shadow bfx-card">
