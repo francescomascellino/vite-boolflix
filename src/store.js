@@ -50,10 +50,7 @@ export const store = reactive({
         })
             .then(response => {
 
-                // this.movies = response.data.results;
                 this.movies = response.data;
-                // console.log("MOVIES DATA", response.data);
-                // this.searchResult.push(...response.data.results);
                 console.log("MOVIES", this.movies);
 
             })
@@ -78,8 +75,6 @@ export const store = reactive({
             .then(response => {
 
                 this.tv = response.data;
-                // console.log("TV DATA", response.data);
-                // this.searchResult.push(...response.data.results);
                 console.log("TV", this.tv);
 
             })
@@ -102,7 +97,6 @@ export const store = reactive({
             .then(response => {
 
                 this.trending = response.data.results;
-                // this.searchResult.push(...response.data.results);
                 console.log("TRENDING", this.trending);
 
             })
@@ -125,7 +119,6 @@ export const store = reactive({
             .then(response => {
 
                 this.airingToday = response.data.results;
-                // this.searchResult.push(...response.data.results);
                 console.log("AIRING TODAY", this.airingToday);
 
             })

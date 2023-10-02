@@ -40,6 +40,8 @@
                     <h3 class="ms-3">Film</h3>
                 </div>
 
+                <!-- <bfxPageControls :results="this.store.movies" :page="this.store.moviesPage"
+                    v-if="this.store.movies.total_pages > 1" /> -->
                 <!-- I PULSANTI DI PAGINAZIONE APPAIONO SOLO SE SONO PRESENTI PIU' PAGINE -->
                 <div class="col-12 d-flex justify-content-around my-4" v-if="this.store.movies.total_pages > 1">
 
@@ -57,7 +59,7 @@
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
 
                     <!-- MOSTRA LE CARD ASSOCIANDO LA PROP "show" A LL'OGGETTO CONTENUTO IN "store" -->
-                    <bfxCards v-if="this.store.movies" :show="show" v-for="show in  this.store.movies.results" />
+                    <bfxCards v-if="this.store.movies" :show="show" v-for="show in this.store.movies.results" />
 
                 </div>
 
@@ -105,16 +107,19 @@ import { Modal } from 'bootstrap';
 // COMPONENTI
 import bfxNav from './components/bfxNav.vue';
 
+import bfxSlider from './components/bfxSlider.vue';
+
 import bfxCards from './components/bfxCards.vue';
 
-import bfxSlider from './components/bfxSlider.vue';
+import bfxPageControls from './components/bfxPageControls.vue';
 
 export default {
 
     components: {
         bfxNav,
+        bfxSlider,
         bfxCards,
-        bfxSlider
+        bfxPageControls
     },
 
     data() {
