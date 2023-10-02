@@ -40,6 +40,20 @@
                     <h3 class="ms-3">Film</h3>
                 </div>
 
+                <!-- I PULSANTI DI PAGINAZIONE APPAIONO SOLO SE SONO PRESENTI PIU' PAGINE -->
+                <div class="col-12 d-flex justify-content-around my-4" v-if="this.store.movies.total_pages > 1">
+
+                    <button class="rounded-2 bfx-btn fw-bold bfx-btn"
+                        :class="this.store.moviesPage == 1 ? 'bfx-btnDisabled' : ''" @click="prevMovies()">Indietro</button>
+
+                    <span> Pagina {{ this.store.movies.page }} di {{ this.store.movies.total_pages }} </span>
+
+                    <button class="rounded-2 bfx-btn fw-bold bfx-btn"
+                        :class="this.store.moviesPage == this.store.movies.total_pages ? 'bfx-btnDisabled' : ''"
+                        @click="nextMovies()">Avanti</button>
+
+                </div>
+
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
 
                     <!-- MOSTRA LE CARD ASSOCIANDO LA PROP "show" A LL'OGGETTO CONTENUTO IN "store" -->
@@ -47,20 +61,23 @@
 
                 </div>
 
-                <!-- I PULSANTI DI PAGINAZIONE APPAIONO SOLO SE SONO PRESENTI PIU' PAGINE -->
-                <div class="col-12" v-if="this.store.movies.total_pages > 1">
-                    <button class="rounded-2  ms-2 bfx-btn fw-bold bfx-btn" @click="prevMovies()">Indietro</button>
-                    <span> Pagina {{ this.store.movies.page }} di {{ this.store.movies.total_pages }} </span>
-                    <button class="rounded-2  ms-2 bfx-btn fw-bold bfx-btn" @click="nextMovies()">Avanti</button>
-                </div>
-
             </template>
 
             <!-- LIST RENDERING DEI DELLE SERIE SE LA RICERCA TROVA RISULTATI (QUINDI "this.store.tv" NON E' "null") -->
             <template v-if="this.store.tv">
 
-                <div class="col-12 mt-5">
+                <div class="col-12">
                     <h3 class="ms-3" v-if="this.store.tv">Serie TV</h3>
+                </div>
+
+                <!-- I PULSANTI DI PAGINAZIONE APPAIONO SOLO SE SONO PRESENTI PIU' PAGINE -->
+                <div class="col-12 d-flex justify-content-around my-4" v-if="this.store.tv.total_pages > 1">
+                    <button class="rounded-2  ms-2 bfx-btn fw-bold bfx-btn"
+                        :class="this.store.seriesPage == 1 ? 'bfx-btnDisabled' : ''" @click="prevSeries()">Indietro</button>
+                    <span> Pagina {{ this.store.tv.page }} di {{ this.store.tv.total_pages }} </span>
+                    <button class="rounded-2  ms-2 bfx-btn fw-bold bfx-btn"
+                        :class="this.store.seriesPage == this.store.tv.total_pages ? 'bfx-btnDisabled' : ''"
+                        @click="nextSeries()">Avanti</button>
                 </div>
 
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
@@ -68,13 +85,6 @@
                     <!-- MOSTRA LE CARD ASSOCIANDO LA PROP "show" A LL'OGGETTO CONTENUTO IN "store" -->
                     <bfxCards v-if="this.store.tv" :show="show" v-for="show in  this.store.tv.results" />
 
-                </div>
-
-                <!-- I PULSANTI DI PAGINAZIONE APPAIONO SOLO SE SONO PRESENTI PIU' PAGINE -->
-                <div class="col-12" v-if="this.store.tv.total_pages > 1">
-                    <button class="rounded-2  ms-2 bfx-btn fw-bold bfx-btn" @click="prevSeries()">Indietro</button>
-                    <span> Pagina {{ this.store.tv.page }} di {{ this.store.tv.total_pages }} </span>
-                    <button class="rounded-2  ms-2 bfx-btn fw-bold bfx-btn" @click="nextSeries()">Avanti</button>
                 </div>
 
             </template>

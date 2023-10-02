@@ -71,7 +71,11 @@ export default {
                 // store.searchResult = [];
                 // console.log("SEARCH EMPTIED", store.searchResult);
 
+                // DA VALORE "null" A TRENDING PER BLOCCARNE IL RENDERING SU applyStyles.vue
                 store.trending = null;
+
+                //DA VALORE NULL AD "activeLink" PER DESELEZIONARE IL PRECEDENTE FILTRO DELLA NAVBAR
+                this.activeLink = null;
 
                 // ASSEGNA A "navSelection" IL VALORE DEL CAMPO DI RICERCA PER MODIFICARE IL TITOLO IN "App.vue"
                 store.navSelection = store.searchImput;
@@ -88,6 +92,7 @@ export default {
                 store.searchTv(this.store.api_tv);
                 // console.log("SEARCH RES", store.searchResult);
 
+                // SVUOTA LA BARRA DI RICERCA
                 store.searchImput = "";
             }
 
