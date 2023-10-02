@@ -40,23 +40,9 @@
                     <h3 class="ms-3">Film</h3>
                 </div>
 
-                <!-- TEST COMPONENTE NAVIGAZIONE PAGINE -->
-                <bfxPageControls :results="this.store.movies" :page="this.store.moviesPage"
-                    v-if="this.store.movies.total_pages > 1" />
-
                 <!-- I PULSANTI DI PAGINAZIONE APPAIONO SOLO SE SONO PRESENTI PIU' PAGINE -->
-                <div class="col-12 d-flex justify-content-around my-4" v-if="this.store.movies.total_pages > 1">
-
-                    <button class="rounded-2 bfx-btn fw-bold bfx-btn"
-                        :class="this.store.moviesPage == 1 ? 'bfx-btnDisabled' : ''" @click="prevMovies()">Indietro</button>
-
-                    <span> Pagina {{ this.store.movies.page }} di {{ this.store.movies.total_pages }} </span>
-
-                    <button class="rounded-2 bfx-btn fw-bold bfx-btn"
-                        :class="this.store.moviesPage == this.store.movies.total_pages ? 'bfx-btnDisabled' : ''"
-                        @click="nextMovies()">Avanti</button>
-
-                </div>
+                <bfxPageControls :results="this.store.movies" :page="this.store.moviesPage" @prev="prevMovies()"
+                    @next="nextMovies()" v-if="this.store.movies.total_pages > 1" />
 
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
 
@@ -67,22 +53,16 @@
 
             </template>
 
-            <!-- LIST RENDERING DEI DELLE SERIE SE LA RICERCA TROVA RISULTATI (QUINDI "this.store.tv" NON E' "null") -->
+            <!-- LIST RENDERING DELLE SERIE SE LA RICERCA TROVA RISULTATI (QUINDI "this.store.tv" NON E' "null") -->
             <template v-if="this.store.tv">
 
-                <div class="col-12">
+                <div class="col-12 mt-4">
                     <h3 class="ms-3" v-if="this.store.tv">Serie TV</h3>
                 </div>
 
                 <!-- I PULSANTI DI PAGINAZIONE APPAIONO SOLO SE SONO PRESENTI PIU' PAGINE -->
-                <div class="col-12 d-flex justify-content-around my-4" v-if="this.store.tv.total_pages > 1">
-                    <button class="rounded-2  ms-2 bfx-btn fw-bold bfx-btn"
-                        :class="this.store.seriesPage == 1 ? 'bfx-btnDisabled' : ''" @click="prevSeries()">Indietro</button>
-                    <span> Pagina {{ this.store.tv.page }} di {{ this.store.tv.total_pages }} </span>
-                    <button class="rounded-2  ms-2 bfx-btn fw-bold bfx-btn"
-                        :class="this.store.seriesPage == this.store.tv.total_pages ? 'bfx-btnDisabled' : ''"
-                        @click="nextSeries()">Avanti</button>
-                </div>
+                <bfxPageControls :results="this.store.tv" :page="this.store.seriesPage" @prev="prevSeries()"
+                    @next="nextSeries()" v-if="this.store.tv.total_pages > 1" />
 
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
 
