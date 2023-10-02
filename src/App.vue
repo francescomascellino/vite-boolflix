@@ -144,7 +144,6 @@ export default {
         nextSeries() {
             if (this.store.seriesPage < this.store.tv.total_pages) {
                 this.store.seriesPage++;
-                console.log(this.store.seriesPage);
             }
             store.searchTv(this.store.api_tv);
         }
