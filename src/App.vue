@@ -40,8 +40,10 @@
                     <h3 class="ms-3">Film</h3>
                 </div>
 
-                <!-- <bfxPageControls :results="this.store.movies" :page="this.store.moviesPage"
-                    v-if="this.store.movies.total_pages > 1" /> -->
+                <!-- TEST COMPONENTE NAVIGAZIONE PAGINE -->
+                <bfxPageControls :results="this.store.movies" :page="this.store.moviesPage"
+                    v-if="this.store.movies.total_pages > 1" />
+
                 <!-- I PULSANTI DI PAGINAZIONE APPAIONO SOLO SE SONO PRESENTI PIU' PAGINE -->
                 <div class="col-12 d-flex justify-content-around my-4" v-if="this.store.movies.total_pages > 1">
 

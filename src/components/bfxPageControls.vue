@@ -21,19 +21,19 @@ export default {
 
     name: "bfxPageControls",
 
+    props: {
+
+        results: "Object",
+        page: "Number",
+
+    },
+
     methods: {
         prevMovies() {
-            if (page > 1) {
-                page--;
+            if (this.page > 1) {
+                this.page--;
             }
             this.store.searchMovies(this.store.api_movies)
-        },
-
-        props: {
-
-            results: "Object",
-            page: "Number"
-
         },
 
         nextMovies() {
