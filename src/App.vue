@@ -21,12 +21,53 @@
                 <h2 v-else>Perchè hai cercato "{{ this.store.navSelection }}"</h2>
             </div>
 
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-evenly g-4">
+            <template v-if="this.store.trending">
 
-                <!-- MOSTRA LE CARD ASSOCIANDO LA PROP "show" A LL'OGGETTO CONTENUTO IN "store" -->
-                <bfxCards :show="show" v-for="show in  this.store.searchResult" />
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
 
-            </div>
+                    <!-- MOSTRA LE CARD ASSOCIANDO LA PROP "show" A LL'OGGETTO CONTENUTO IN "store" -->
+                    <bfxCards v-if="this.store.trending" :show="show" v-for="show in  this.store.trending" />
+
+                </div>
+
+            </template>
+
+            <template v-if="this.store.movies">
+
+                <div class="col-12">
+                    <h3 class="ms-3" v-if="this.store.movies">Film</h3>
+                </div>
+
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+
+                    <!-- MOSTRA LE CARD ASSOCIANDO LA PROP "show" A LL'OGGETTO CONTENUTO IN "store" -->
+                    <bfxCards v-if="this.store.movies" :show="show" v-for="show in  this.store.movies.results" />
+
+                </div>
+
+                <div class="col-12" v-if="this.store.movies.total_pages > 1">
+                    <button class="rounded-2  ms-2 bfx-btn fw-bold bfx-btn" @click="prev()">Indietro</button>
+                    <span> Pagina {{ this.store.movies.page }} di {{ this.store.movies.total_pages }} </span>
+                    <button class="rounded-2  ms-2 bfx-btn fw-bold bfx-btn" @click="next()">Avanti</button>
+                </div>
+
+            </template>
+
+            <template v-if="this.store.tv">
+
+                <div class="col-12 mt-5">
+                    <h3 class="ms-3" v-if="this.store.tv">Serie TV</h3>
+                </div>
+
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+
+                    <!-- MOSTRA LE CARD ASSOCIANDO LA PROP "show" A LL'OGGETTO CONTENUTO IN "store" -->
+                    <bfxCards v-if="this.store.tv" :show="show" v-for="show in  this.store.tv" />
+
+                </div>
+
+            </template>
+
         </div>
 
     </main>
@@ -72,10 +113,26 @@ export default {
 
     },
 
+    methods: {
+        prev() {
+            if (this.store.moviesPage > 1) {
+                this.store.moviesPage--;
+            }
+            this.store.searchMovies(this.store.api_movies)
+        },
+        next() {
+            if (this.store.moviesPage < this.store.movies.total_pages) {
+                this.store.moviesPage++;
+            }
+            this.store.searchMovies(this.store.api_movies)
+        }
+    },
+
 }
 
 </script>
 
 <style lang="scss" scoped>
 @use './assets/scss/partials/variables.scss' as *;
+@use './assets/scss/partials/bfxBtn.scss';
 </style>

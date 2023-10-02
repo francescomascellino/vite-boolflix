@@ -17,7 +17,7 @@
 
                 <input class="ms-4 rounded-2" type="search" name="bfx-searchBar" id="bfx-searchBar" required
                     placeholder="Cosa vuoi guardare?" v-model="this.store.searchImput" @keyup.enter="startSearch()">
-                <button class="rounded-2  ms-2 bfx-btn" @click="startSearch">Search</button>
+                <button class="rounded-2  ms-2 bfx-btn fw-bold" @click="startSearch">Cerca</button>
 
             </div>
 
@@ -68,16 +68,25 @@ export default {
             if (store.searchImput.length > 0) {
 
                 // SVUOTA L'ARRAY DEI RISULTATI DI RICERCA
-                store.searchResult = [];
-                console.log("SEARCH EMPTIED", store.searchResult);
+                // store.searchResult = [];
+                // console.log("SEARCH EMPTIED", store.searchResult);
+
+                store.trending = null;
+
+                // ASSEGNA A "navSelection" IL VALORE DEL CAMPO DI RICERCA PER MODIFICARE IL TITOLO IN "App.vue"
+                store.navSelection = store.searchImput;
+
+                // ASSEGNA ALLA QUERY DELLA CHIAMATA IL VALORE DEL CAMPO DI RICERCA
+                store.query = store.searchImput;
+
+                // IMPOSTA LA PAGINA INIZIALE SU 1
+                store.moviesPage = 1;
 
                 // CERCA SIA FILM CHE SERIE CORRISPONDENTI A "searchImput (VEDI FUNZIONI DI RICERCA SU "store.js")"
                 store.searchMovies(this.store.api_movies);
                 store.searchTv(this.store.api_tv);
-                console.log("SEARCH RES", store.searchResult);
+                // console.log("SEARCH RES", store.searchResult);
 
-                // ASSEGNA A "navSelection" IL VALORE DEL CAMPO DI RICERCA PER MODIFICARE IL TITOLO IN "App.vue"
-                store.navSelection = store.searchImput;
                 store.searchImput = "";
             }
 
@@ -97,8 +106,11 @@ export default {
         navSearch(argument) {
 
             // SVUOTA IL CAMPO DI RICERCA
-            store.searchResult = [];
-            console.log("SEARCH EMPTIED", store.searchResult);
+            // store.searchResult = [];
+            // console.log("SEARCH EMPTIED", store.searchResult);
+
+            store.movies = null;
+            store.tv = null;
 
             // A SECONDA DELL LINK CLICKATO EFFETTUA UNA RICERCA DIVERSA
             if (argument == "Movies") {

@@ -15,15 +15,19 @@ export const store = reactive({
     api_airing_tv: 'https://api.themoviedb.org/3/tv/airing_today', //SERIE AIRING TORDAY
 
     // ARRAY DEI VARI RISULTATI
-    movies: [], //response DELLA CHIAMATA AXIOS MOVIES
-    tv: [], //response DELLA CHIAMATA AXIOS TV
-    trending: [], //response DELLA CHIAMATA AXIOS TRENDING
+    movies: null, //response DELLA CHIAMATA AXIOS MOVIES
+    tv: null, //response DELLA CHIAMATA AXIOS TV
+    trending: null, //response DELLA CHIAMATA AXIOS TRENDING
 
-    searchResult: [], // ARRAY DEL REST DELLE RICHERCHE
+    // searchResult: [], ARRAY DEL REST DELLE RICHERCHE
 
     airingToday: [], //SERIE TV IN ONDA OGGI
 
     searchImput: "", // IL v-model DEL CAMPO DI RICERCA
+
+    query: "", // QUERY CHIAMATA AXIOS
+
+    moviesPage: 1, // CONTROLLO DELLA PAGINA INIZIALE. DEVE ESSERE RIPORTATO A 1 A OGNI RICERCHA
 
     navSelection: "Trending", // ETICHETTA DELL'ELEMENTO DELLA NAV SELEZIONATO
 
@@ -35,16 +39,19 @@ export const store = reactive({
 
             params: {
                 api_key: this.api_key,
-                query: this.searchImput,
+                query: this.query,
                 include_adult: false,
-                language: "it-IT"
+                language: "it-IT",
+                page: this.moviesPage
             }
 
         })
             .then(response => {
 
-                this.movies = response.data.results;
-                this.searchResult.push(...response.data.results);
+                // this.movies = response.data.results;
+                this.movies = response.data;
+                console.log("MOVIES DATA", response.data);
+                // this.searchResult.push(...response.data.results);
                 console.log("MOVIES", this.movies);
 
             })
@@ -59,7 +66,7 @@ export const store = reactive({
 
             params: {
                 api_key: this.api_key,
-                query: this.searchImput,
+                query: this.query,
                 include_adult: false,
                 language: "it-IT"
             }
@@ -68,7 +75,8 @@ export const store = reactive({
             .then(response => {
 
                 this.tv = response.data.results;
-                this.searchResult.push(...response.data.results);
+                console.log("TV DATA", response.data);
+                // this.searchResult.push(...response.data.results);
                 console.log("TV", this.tv);
 
             })
@@ -91,7 +99,7 @@ export const store = reactive({
             .then(response => {
 
                 this.trending = response.data.results;
-                this.searchResult.push(...response.data.results);
+                // this.searchResult.push(...response.data.results);
                 console.log("TRENDING", this.trending);
 
             })

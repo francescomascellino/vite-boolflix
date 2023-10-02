@@ -11,11 +11,15 @@ body {
 }
 
 .col {
-    max-width: 342px !important;
-    padding: 0 !important;
+    // max-width: 342px !important;
+    // padding: 0 !important;
 }
 
-h2 {
+p,
+span,
+h1,
+h2,
+h3 {
     color: $bfx-primary !important;
     margin-bottom: 2rem;
 }

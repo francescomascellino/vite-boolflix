@@ -1,7 +1,7 @@
 <template>
     <div class="col">
 
-        <div class="shadow rounded-2 bfx-card">
+        <div class="shadow bfx-card">
 
             <div class="bfx-overlay">
 
